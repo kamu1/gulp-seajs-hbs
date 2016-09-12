@@ -1,0 +1,63 @@
+{
+    "list": [{
+            "title": "JavaScript",
+            "summary": "可以通过javaScript实现前端各种交互特效，控制对象的CSS样式等，开发想要的DHTML效果！"
+        },
+        {
+            "title": "jQuery、Zepto",
+            "summary": "因为jQuery用起来比javaScript更方便，可以加快不少开发速度，很多时候都是用jQuery来控制对象，编写一些通用的插件程序供项目使用！移动端一般都采用Zepto，因为其功能照样强大且体积小；"
+        },
+        {
+            "title": "nodejs",
+            "summary": "有借用Express框架自行编写过后台接口程序，操作MongDB数据库的增删改查操作，并配合ejs和handlebars模板对页面进行了渲染！深入的还没有太多时间研究！"
+        },
+        {
+            "title": "PHP",
+            "summary": "会用PHP对数据库进行增删改查操作等，因往年经常使用ASP编写后台程序，后来自学了一下PHP，在给自己团队做培训的时候，会使用PHP编写模拟后台接口给前端使用！"
+        },
+        {
+            "title": "ASP",
+            "summary": "用ASP开发过很多WEB系统，有开发过：同学录，个人记账软件，彩票选号，进销存管理系统，产品信息平台，劳资管理系统，各种中小型企业网站等"
+        },
+        {
+            "title": "SQLserver",
+            "summary": "我后台开发对ASP比较熟练，所以数据库常用到的也是SQL Server来作为ASP开发的组合！"
+        },
+        {
+            "title": "Access",
+            "summary": "若是小型系统的开发，和ASP是最佳的选择，经常会用到，无需配制，方便移植，很方便！不过现在基本很少会用到了。"
+        },
+        {
+            "title": "sublime、HBuilder",
+            "summary": "WEB开发都必须会使用的软件，HBuilder快捷，一键运行服务器，文件操作方便；sublime功能强大，加载速度极快，可集成很多nodejs插件，是前后端开发最熟悉不过的软件了！"
+        },
+        {
+            "title": "Fireworks",
+            "summary": "网站页面设计上，我基本都用Fireworks，能完整的设计出网站页面，它的特点就是体现直接，快捷，分离得好，马上能看到效果，跟网站前端的框架体现很相似！所以之前我一直钟爱着Fireworks!"
+        },
+        {
+            "title": "Photoshop",
+            "summary": "能使用Photoshop进行图片的制作和处理，网页设计等！相对我用Fireworks会多一些！"
+        },
+        {
+            "title": "Flash",
+            "summary": "在部分客户要求做flash动画，比如网站欢迎页、广告条等我都会用到它来完成！现在从体验上考虑基本用CSS3来开发取代。"
+        },
+        {
+            "title": "CorelDraw",
+            "summary": "能通过CorelDraw+其它设计软件完成名片、画册、标签等的制作！"
+        },
+        {
+            "title": "VBscript",
+            "summary": "在学VB的影响下，我最初会用到VBscript来制作个人网页的效果，以前会通过VB写一些Excel宏程序；网页上后来学习javaScript的后，现在就基本没有使用到它了！"
+        },
+        {
+            "title": "Office、WPS",
+            "summary": "因在高职院校时就学习MS Office办公套件，多年生活工作中都有使用到，并在当时实习期间给学院报考了国家一级的学员进行过MS Office的上机实训辅导，在日常工作对文档、电子表格、PPT的使用比较熟练！"
+        },
+        {
+            "title": "Corel VideoStudio",
+            "summary": "会声会影：视频编辑软件，能通过Corel VideoStudio进行视频处理和编辑，组合各种音频、视频、图文等素材进行如活动片头、宣传片、后期配音合成等视频制作！当然这是一个非常费时间和精力活，纯属个人爱好学了学！"
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+<div class="my-work my-experience">
+	<div class="e-title nav-name nav-work" data-id="nav-work">
+		<label class="middle">
+		<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAt0lEQVQ4T+2UUQ3CQBBEZxzgABwADoqDOsACDgAH4KAOQAI4QAoOhgyB5NrcXVsaAh/d7913k5vdIb5QzDElHQDMIz1HkufUbBIqqQBQktyEw5ImAC4kF59CC5K75rAkQ/1otPhSdAJgBUPrBmBlqJVsh9KC+RH6oz/dN0ycAVhnjH0a5aZpcufIa2T5Y1f2bmOXlfKp3gOwL6lsUzru6f+f6dLuO51sVjIfe4RNRbLKJn8PWK31AUrhXCu8E2H0AAAAAElFTkSuQmCC" alt="">	
+		</label>
+		<span>工作经历</span>
+	</div>
+	<div class="work-list e-list">
+		<ul class="n">
+		{{#each list}}
+			<li>
+				<div class="l-sign"></div>
+				<div class="l-info">
+					<div class="l-time">{{datetime}}</div>
+					<div class="l-name">{{name}}</div>
+					<div class="l-post">{{post}}</div>
+					<div class="l-summary">{{{summary}}}</div>
+				</div>
+			</li>
+		{{/each}}
+		</ul>
+	</div>
+</div>

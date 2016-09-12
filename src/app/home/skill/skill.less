@@ -1,0 +1,88 @@
+.my-skill{
+	.s-list{
+		margin-top: 10px;
+		background: #f3f3f3;
+		margin-right: 10px;
+		border-radius: 5px;
+		overflow: hidden;
+		li{
+			>*{
+				>input{
+				display: none;
+				&:checked{
+					+*{
+						box-shadow:0 0 100em 100em rgba(0,0,0,.05) inset;
+						.s-text .s-summary{
+							display: block;
+							overflow: auto;
+							-webkit-box-orient: vertical;
+							box-orient: vertical;
+							-webkit-line-clamp: 3;
+							line-clamp: 3;
+						}
+					}
+				}
+					+*{
+						display: block;
+						overflow: hidden;
+						padding:10px 0;
+						border-top:1px solid #FFF;
+						border-bottom:1px solid #DDD;
+						.s-img{
+							float: left;
+							width:60px;
+							height:60px;
+							margin-left: 10px;
+							border-radius: 5px;
+							overflow: hidden;
+							background: #FFF;
+							border:1px solid #FFF;
+							img{
+								max-width: 100%;
+								max-height:100%;
+							}
+							+.s-text .s-summary{
+								-webkit-line-clamp: 2;
+								line-clamp: 2;
+							}
+						}
+						.s-text{
+							overflow: hidden;
+							margin-right: 10px;
+							.s-title{
+								margin-left: 10px;
+								font-size: 15px;
+								line-height: 1em;
+							}
+							.s-summary{
+								text-indent: 2em;
+								margin-left: 10px;
+								font-size: 12px;
+								color: #777;
+								margin-top: 7px;
+								line-height: 1.7em;
+								display: -webkit-box;
+								display: box;
+								-webkit-box-orient: vertical;
+								box-orient: vertical;
+								-webkit-line-clamp: 3;
+								line-clamp: 3;
+								overflow: hidden;
+							}
+						}
+					}
+				}
+			}
+			&:first-child{
+				>div{
+					border-top:none;
+				}
+			}
+			&:last-child{
+				>div{
+					border-bottom: none;
+				}
+			}
+		}
+	}
+}

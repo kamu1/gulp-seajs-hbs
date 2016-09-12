@@ -1,0 +1,23 @@
+<div class="my-experience">
+	<div class="e-title nav-name nav-education" data-id="nav-education">
+		<label class="middle">
+		<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABLUlEQVQ4T72UfXHCUBDEdxW0DoqDVkKrgDqAKqAOSBQUHBQH4AAcUAetg6BgmWXuMQ9Iwkcz3D+8GV5+2b29C9FxsWMe7g+U9ApgAKACMCO5bnNVq1BSD8AIwDsAn/P6BTAHMCXp80EdACUNQ41VXVJWOyE5S5cp6THUfALw+Zay0m+SpYFWYwsPt5CyZzZu0c5yqLRdq3y6EvwXzmy9OAlFkoMwvH8GvAibc0lLAMsmYM/pRdIJ/hzwH0PconQnfluBRYTkB3dzF/CKZCXpJRupKQAH8hUvfKuzbOA4s5vmzhPgAPO5LJPiAA8vAba1snTfHKrV+2InwPyN/wV+kHSv99W0y+6jR6dpJlcACpJOt3mXj/+MRB2Ck3V5d9d1H4X9Ll+5FWevd/6B3QIlBnyME97N0AAAAABJRU5ErkJggg==" alt="">	
+		</label>
+		<span>教育经历</span>
+	</div>
+	<div class="e-list">
+		<ul class="n">
+		{{#each list}}
+			<li>
+				<div class="l-sign"></div>
+				<div class="l-info">
+					<div class="l-time">{{datetime}}</div>
+					<div class="l-name">{{name}}</div>
+					<div class="l-post">{{professional}}</div>
+					<div class="l-summary">{{{summary}}}</div>
+				</div>
+			</li>
+		{{/each}}
+		</ul>
+	</div>
+</div>

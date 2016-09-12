@@ -1,0 +1,30 @@
+<div class="my-skill my-experience">
+	<div class="e-title nav-name nav-skill" data-id="nav-skill">
+		<label class="middle">
+		<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAA60lEQVQ4T+2VXRHCMBCE9xSAg9YBOAAUMCjAAlJqAQUUBVQCOEACKFhmO0lIO01phtfeY3P5Zu8nWyNZA9hjPGozO/zIaY+NJCclmtmkPAc8A3gmLpQAjpYJ3JlZMwQkuQVwm4HJ+fgpzz38tiheG5Jarc3IgtdZPSS5BrDsASsAK/8tC5hY/I5qDzwBuCdKkaoq9VJcG5TzAlD8bQ4OKDFSeukDHwD0dhUyi0XoTcIchoCSGi5GpasMH28z6w+jPXNADUWcUgqlyKtKbUQz4kbdoXgCSfleMcVEB9YmVBNc2CnV7yAuP5d//QDYI7NOcO8N8AAAAABJRU5ErkJggg==" alt="">	
+		</label>
+		<span>IT技能</span>
+	</div>
+	<div class="s-list">
+		<ul class="n">
+			{{#each list}}
+			<li>
+				<label>
+					<input type="radio" name="skill-radio" id="">
+					<div>
+					{{#if imgUrl}}
+						<div class="s-img middle">
+							<img src="{{imgUrl}}" alt="">
+						</div>
+					{{/if}}
+						<div class="s-text">
+							<div class="s-title">{{title}}</div>
+							<div class="s-summary">{{{summary}}}</div>
+						</div>
+					</div>
+				</label>
+			</li>
+			{{/each}}
+		</ul>
+	</div>
+</div>

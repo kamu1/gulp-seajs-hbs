@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">
+	<meta name="format-detection" content="telephone=no" />
+	{{> home/common/head}}
+	<title>{{title}}</title>
+	<!-- build:css ./index.css -->
+	<link rel="stylesheet" href="../../../public/plugin/swiper/swiper.min.css">
+	<link rel="stylesheet" href="./index.css">
+	<link rel="stylesheet" href="../personal/personal.css">
+	<link rel="stylesheet" href="../work/work.css">
+	<link rel="stylesheet" href="../case/case.css">
+	<link rel="stylesheet" href="../skill/skill.css">
+    <!-- endbuild -->
+</head>
+<body>
+	<input type="checkbox" name="checkbox-hide-nav" id="checkbox-hide-nav">
+	<div class="page-main">
+		<div class="page-sidebar">
+			<div class="sidebar-info">
+				{{#if imgUrl}}
+				<div class="s-img">
+					<img src="{{imgUrl}}" alt="">
+					<!-- 保证图片容器为正方形 -->
+					<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAwOS8wNi8xNl5WaRsAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzbovLKMAAAADUlEQVQImWP4//8/AwAI/AL+hc2rNAAAAABJRU5ErkJggg==" alt="">
+				</div>
+				{{/if}}
+				{{#if name}}<div class="s-name">{{name}}</div>{{/if}}
+				{{#if jobs}}<div class="s-summary">{{jobs}}</div>{{/if}}
+			</div>
+			<div class="sidebar-nav J-sidebar-nav">
+				<ul>
+				<!-- 以下列表JS会按实际栏目再渲染一遍 -->
+					<li class="J-my-info">
+						<div>基本信息</div>
+					</li>
+					<li id="nav-work" class="active">
+						<div>工作经历</div>
+					</li>
+					<li id="nav-education">
+						<div>教育经历</div>
+					</li>
+					<li id="nav-project">
+						<div>项目经验</div>
+					</li>
+					<li id="nav-case">
+						<div>项目案例</div>
+					</li>
+					<li id="nav-skill">
+						<div>IT技能</div>
+					</li>
+					<li id="nav-evaluate">
+						<div>自我评价</div>
+					</li>
+					<li class="J-2weima to-up">
+						<div>关于简历</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="page-content">
+			<div class="c-info">
+				{{> home/personal/index}}
+				<label for="checkbox-hide-nav" class="hide-left-nav"><!--收展左栏--></label>
+				<div class="swiper-container swiper-H" style="height: 100%;">
+					<div class="swiper-wrapper" style="height: 100%;">
+						<div class="swiper-slide" style="height: auto;background: #FFF;">
+							{{> home/work/index}}
+							{{> home/education/index}}
+							{{> home/project/index}}
+							{{> home/case/index}}
+							{{> home/skill/index}}
+							{{> home/evaluate/index}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script>seajs.use("./index")</script>
+</body >
+</html>

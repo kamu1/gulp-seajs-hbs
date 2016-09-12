@@ -1,0 +1,121 @@
+{
+    "list": [{
+        "title": "阿里巴巴1688平台部分项目产品的前端页面",
+        "label": "互联网 阿里 1688 动效",
+        "links":[
+            {"url":"@@CONTEXT_PATH/app/home/project-case/flutter.html","title":"仿微信-随机飘落"},
+            {"url":"@@CONTEXT_PATH/app/home/project-case/quanwangkuanghuan.html","title":"诚信通全网狂欢·PC"},
+            {"url":"@@CONTEXT_PATH/app/home/project-case/chengxintong.html","title":"诚信通发布盛会·PC"},
+            {"url":"@@CONTEXT_PATH/app/home/project-case/renling.html","title":"诚信通认领工具·PC"},
+            {"url":"@@CONTEXT_PATH/app/home/project-case/qianniu.html","title":"千牛每日焦点·PC"},
+            {"url":"@@CONTEXT_PATH/app/home/project-case/wangxiaobao.html","title":"网销宝·PC或横屏"}
+        ],
+        "images": [
+            { "url": "@@CONTEXT_PATH/static/images/case/7.jpg" },
+            { "url": "@@CONTEXT_PATH/static/images/case/8.jpg" },
+            { "url": "@@CONTEXT_PATH/static/images/case/9.jpg" },
+            { "url": "@@CONTEXT_PATH/static/images/case/10.jpg" },
+            { "url": "@@CONTEXT_PATH/static/images/case/5.jpg" },
+            { "url": "@@CONTEXT_PATH/static/images/case/6.jpg" },
+            { "url": "@@CONTEXT_PATH/static/images/case/12.jpg" },
+            { "url": "@@CONTEXT_PATH/static/images/case/2.jpg" },
+            { "url": "@@CONTEXT_PATH/static/images/case/11.jpg" },
+            { "url": "@@CONTEXT_PATH/static/images/case/1.jpg" },
+            { "url": "@@CONTEXT_PATH/static/images/case/3.jpg" },
+            { "url": "@@CONTEXT_PATH/static/images/case/4.jpg" }
+        ],
+        "summary": "因参与的整体项目不对外，没有入口，这里选了几个典型的纯前端页面来展示，包含JS+CSS3技术点的结合，实现了号牌翻转、九宫格抽奖、极光动效、图标随机飘落，滑屏页面等效果！具体效果可点击右上角菜单进入"
+    },{
+        "title": "创客汇投融资创业服务平台",
+        "label": "社交 聊天 生活",
+        "links": [
+            { "url": "http://www.idea2ipo.cn" }
+        ],
+        "images": [
+            { "url": "/jl/inc/images/cases/idea2ipo/small/1.jpg" },
+            { "url": "/jl/inc/images/cases/idea2ipo/small/2.jpg" },
+            { "url": "/jl/inc/images/cases/idea2ipo/small/3.jpg" }
+        ],
+        "summary": "为资本汇系统平台的资源构建一个社交化，孵化器园区管理，为投资人和创业者建立创投圈，通过APP社交平台不断拓展人脉关系！"
+    }, {
+        "title": "资本汇股权众筹投融资平台",
+        "label": "金融 众筹 投资 创业",
+        "links": [
+            { "url": "http://www.ziben365.com" },
+            { "url": "http://m.ziben365.com", "title": "访问手机版", "class": "mobile" }
+        ],
+        "images": [
+            { "url": "/jl/inc/images/cases/ziben365/small/1.jpg" },
+            { "url": "/jl/inc/images/cases/ziben365/small/2.jpg" },
+            { "url": "/jl/inc/images/cases/ziben365/small/3.jpg" },
+            { "url": "/jl/inc/images/cases/ziben365/small/4.jpg" },
+            { "url": "/jl/inc/images/cases/ziben365/small/5.jpg" },
+            { "url": "/jl/inc/images/cases/ziben365/small/6.jpg" },
+            { "url": "/jl/inc/images/cases/ziben365/small/7.jpg" }
+        ],
+        "summary": "为资本汇系统平台的资源构建一个社交化，孵化器园区管理，为投资人和创业者建立创投圈，通过APP社交平台不断拓展人脉关系！"
+    },{
+        "title": "资本汇平台微信推广",
+        "label": "投资 创业 资本",
+        "links": [
+            { "url": "http://m.ziben365.com/slide/welcome/index.html" , "title": "访问手机版"}
+        ],
+        "images": [
+            { "url": "/jl/mobimg/2.jpg" },
+            {"url": "@@CONTEXT_PATH/static/images/ziben/h.jpg"},
+            {"url": "@@CONTEXT_PATH/static/images/ziben/i.jpg"}
+        ],
+        "summary": "专注创业与投资的创业平台"
+    },{
+        "title": " 资本汇 APP发布会",
+        "label": "众筹 股权 APP发布会",
+        "links": [
+            { "url": "http://m.ziben365.com/slide/index" , "title": "访问手机版"}
+        ],
+        "images": [
+            {"url": "@@CONTEXT_PATH/static/images/ziben/1.jpg"},
+            {"url": "@@CONTEXT_PATH/static/images/ziben/a.jpg"},
+            {"url": "@@CONTEXT_PATH/static/images/ziben/b.jpg"},
+            {"url": "@@CONTEXT_PATH/static/images/ziben/c.jpg"}
+        ],
+        "summary": "吸引更多的投资人和创业者加入"
+    },{
+        "title": " 资本汇 APP宣传页面",
+        "label": "股权 资本 宣传",
+        "links": [
+            { "url": "http://m.ziben365.com/slide/h5", "title": "访问手机版" }
+        ],
+        "images": [
+            { "url": "/jl/mobimg/4.jpg" },
+            {"url": "@@CONTEXT_PATH/static/images/ziben/d.jpg"},
+            {"url": "@@CONTEXT_PATH/static/images/ziben/e.jpg"},
+            {"url": "@@CONTEXT_PATH/static/images/ziben/f.jpg"},
+            {"url": "@@CONTEXT_PATH/static/images/ziben/g.jpg"}
+        ],
+        "summary": "专注于创业与投资的社交APP"
+    },{
+        "title": "趣约：资本汇项目之一",
+        "label": "约会 社交 聊天",
+        "links": [
+            { "url": "http://www.ziben365.com/project/info/4Dim" },
+            { "url": "http://m.ziben365.com/show?id=551", "title": "访问手机版" }
+        ],
+        "images": [
+            { "url": "/jl/mobimg/5.jpg" },
+            {"url": "@@CONTEXT_PATH/static/images/ziben/j.jpg"},
+            {"url": "@@CONTEXT_PATH/static/images/ziben/k.jpg"},
+            {"url": "@@CONTEXT_PATH/static/images/ziben/l.jpg"}
+        ],
+        "summary": "做容易找到彼此的真正的兴趣社交APP"
+    },{
+        "title": "《湖南之最》",
+        "label": "文化 地域 书籍 知识库",
+        "images": [
+            { "url": "/jl/inc/images/cases/hnmost/small/1.jpg" },
+            { "url": "/jl/inc/images/cases/hnmost/small/3.jpg" },
+            { "url": "/jl/inc/images/cases/hnmost/small/2.jpg" },
+            { "url": "/jl/inc/images/cases/hnmost/small/4.jpg" }
+        ],
+        "summary": "在公司协助编辑部完成此书的数据整理，去重复等技术，此作品并非能代表我的前端开发能力，有一定的与传统编辑团队人员的合作和对数据分析处理的能力。"
+    }]
+}

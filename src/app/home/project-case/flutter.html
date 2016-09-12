@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>flutter</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+		<script type="text/javascript">
+			/*
+		 * wb-dengkaiping@alibaba-inc.com 
+		 * 插件开始：插件和样式代码块不用管，在247行配制调用插件的方法即可
+		 */
+			(function($){
+				var defaults={
+					addClass:"style2",
+					//背景
+					background:"",
+					//背景图片(在背景前，可自定义CSS控制动画)
+					//backgroundImage:["imgs/dropOut/1/bj1.png","imgs/dropOut/1/bj2.png"],
+					//backgroundImage:["imgs/dropOut/2/bj1.png","imgs/dropOut/2/bj2.png"],
+					backgroundImage:"imgs/dropOut/4/bj.gif",
+					//显示图标总数（可自行随机生成范围）
+					num:12,
+					//在几列中显示
+					column:10,
+					//延时再动的时间范围
+					delay:[0,1000],
+					//到达时间范围
+					time:[1200,4000],
+					base:"@@CONTEXT_PATH/static/images/",
+					//默认的图标组
+					images:[
+						"imgs/dropOut/1/a_03.png",
+						"imgs/dropOut/1/a_06.png",
+						"imgs/dropOut/1/a_09.png",
+						"imgs/dropOut/1/a_15.png"
+					],
+					//动画组，随机产生，CSS动画名，可自增加
+					animationName:["toBottom","toBottom-1","toBottom-2"],
+					//动画曲线类型，随机产生
+					animationTimingFunction:["linear","ease","ease-in","ease-out","ease-in-out"]
+				};
+				var fun={
+					//生成随机数
+					rnd : function(Num,maxNum){
+						if (!maxNum){
+							maxNum=Num;
+							Num=0;
+						}
+						Num=parseInt(Math.random()*(maxNum-Num+1)+Num,10);
+						return Num;
+					},
+					//加上CSS前缀，兼容主流浏览器
+					cssPrefix:function(attr,value){
+						var prefix=["-webkit-","-ms-","-moz-"];
+						return prefix.map(function(val){
+							return val + attr + ":" + value + ";"
+						});
+					}
+				}
+				$.fn.extend({
+					flutter:function(options){
+						var This=$(this);
+						var opts = $.extend(defaults,options);
+						var column=opts.column>0?opts.column:5;
+						var num=opts.num>0?opts.num:5;
+						var time=opts.time instanceof Array ? (opts.time.length>=2?opts.time:[opts.time,opts.time]) : (opts.time>0?[opts.time,opts.time]:[3000,3000]);
+						var delay=opts.delay instanceof Array ? (opts.delay.length>=2?opts.delay:[opts.delay,opts.delay]) : (opts.delay>0?[opts.delay,opts.delay]:[0,0]);
+						var animationName=opts.animationName instanceof Array ? opts.animationName : [opts.animationName];
+						var animationTimingFunction=opts.animationTimingFunction instanceof Array ? opts.animationTimingFunction : [""];
+						var images=opts.images instanceof Array ? opts.images : false;
+						var bgImage=opts.backgroundImage instanceof Array ? opts.backgroundImage : [opts.backgroundImage];
+						if (!images){
+							alert('请配制iamges:["..."]图片地址项');
+							console.log('请配制iamges:["..."]图片地址项');
+							return false;
+						}
+						if (!This.length){
+							$("body").append('<div class="flutter animation flutter__"><ul></ul><div class="vmc"></div></div>');
+							This = $(".flutter__");
+						}else if(!This.children().length){
+							This.html('<ul></ul><div class="vmc"></div>');
+						}
+						This.removeAttr("class").addClass("flutter animation flutter__ " + opts.addClass).show();
+						var _obj;
+						if (opts.background){
+							This.children("div").css({"background":opts.background});
+						}
+						if (bgImage){
+							if (bgImage){
+								var bgImage = bgImage.map(function(v){
+									return '<img src="' + opts.base + v +'" />';
+								});
+								This.children("div").html('<span>' + bgImage.join("") + '</span>');
+							}
+						}
+						_obj= This.children().eq(0);
+						_obj.html("");
+						//若数量小于列数，则...
+						if (num < column){
+							column=num;
+						}
+						for (var i=1;i<=column;i++){
+							_obj.append('<li style="width:'+(100/column)+'%"></li>');
+						}
+						for (var i=0;i<num;i++){
+							if (i<column){
+								k=i;
+							}else{
+								k=fun.rnd(column-1);
+								k= k<column ? k : k=column-1;
+							}
+							var aniDuration="";
+							if (time.length>1){
+								aniDuration = 'style="'+fun.cssPrefix("animation-duration",fun.rnd(time[0],time[1])+"ms")
+							}
+							if (delay.length>1){
+								aniDuration += fun.cssPrefix("animation-delay",fun.rnd(delay[0],delay[1])+"ms");
+							}
+							if (animationTimingFunction){
+								aniDuration +=fun.cssPrefix("animation-timing-function", animationTimingFunction[fun.rnd(animationTimingFunction.length-1)]);
+							}
+							if (animationName){
+								aniDuration +=fun.cssPrefix("animation-name", animationName[fun.rnd(animationName.length-1)]);
+							}
+							if (aniDuration){aniDuration+='"';}
+							_obj.children().eq(k).append('<span id="ani__'+ i +'" '+ aniDuration +'><img src="'+ opts.base + images[fun.rnd(images.length-1)] +'"/></span>');
+							var aniNum=0;
+							$("#ani__"+ i).on("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",function(){
+								$(this).remove();
+								aniNum++;
+								if (aniNum>=num){This.fadeOut(200,function(){
+									This.remove();
+								});}
+							});
+						}
+					},
+					rnd:function(Num,maxNum){
+						return fun.rnd(Num,maxNum);
+					}
+				})
+			})(jQuery);
+			//插件结束
+		</script>
+		<style type="text/css">
+			html,body{height: 100%;margin:0;padding:0;background: #FFF;}
+			button{margin:5px;margin-top: 30px;font-size: 14px;font-family: "微软雅黑"}
+			/*内容垂直居中*/
+			.vmc{text-align: center; overflow: hidden;}
+			.vml{text-align: left}.vmr{text-align: right}
+			.vmc,.vml,.vmr{white-space:nowrap;letter-spacing:-0.5em}
+			.vmc:after,.vml:after,.vmr:before{content:"";display:inline-block;height:100%;width:0;overflow:hidden;vertical-align:middle}
+			.vmc>*,.vml>*,.vmr>*{display:inline-block;vertical-align:middle;text-align:left;letter-spacing:normal;white-space:normal}
+			.vmc>img{max-width: 100%;max-height: 100%;}
+			/*搜索动效样式*/
+			.flutter__{display:none;position: fixed;top:0;left:0;width:100%;height: 100%;pointer-events:none;}
+			.flutter__>ul{display: none;position: relative;z-index: 10;}
+			.flutter__>ul:first-child{display:block;height: 100%;margin:0;padding:0;list-style: none;overflow: hidden;}
+			.flutter__>ul>*{display:block;height:100%;width:20%;float: left;position: relative;}
+			.flutter__>ul>*>*{position: absolute;}
+			.flutter__>ul>*>*>*{position: absolute;bottom:0;}
+			.flutter__.animation>ul>*>*{-webkit-animation:toBottom 5s linear;animation:toBottom 5s linear }
+			.flutter__>div{position: absolute;top:0;left:0;width: 100%;height:100%;background: center no-repeat;}
+			.flutter__>div>*{position: relative;max-width: 90%;}
+			.flutter__>div>*>*{position: absolute;top:0;left:0;max-width: 100%;}
+			.flutter__>div>*>*:first-child{position: static;}
+			@media only screen and (max-width: 640px) {
+				.flutter__ ul span img{max-width: 30px}
+			}
+			
+			/*左右摇摆动效*/
+			.style1>div>*>*:first-child+img{top:1%;left:26.5%;width:19.4%;-webkit-animation: style1 600ms linear infinite alternate;-webkit-transform-origin: 50% 90%;animation: style1 600ms linear infinite alternate;transform-origin: 50% 90%;}
+			.style2>div>*>*:first-child+img{top:1%;left:21.5%;width:18.58%;-webkit-animation: style1 600ms linear infinite alternate;-webkit-transform-origin: 50% 90%;animation: style1 600ms linear infinite alternate;transform-origin: 50% 90%;}
+			.style3>div>*>*:first-child+img{top:auto;bottom:0;left:63%;width:20%;-webkit-animation: style3 600ms linear infinite alternate;-webkit-transform-origin: 50% 90%;animation: style3 600ms linear infinite alternate;transform-origin: 50% 90%;}
+			/*.style3>div>*>*:first-child+img{top:auto;bottom:0;left:63%;width:20%;-webkit-animation: style3 600ms linear infinite;animation: style3 1200ms linear infinite ;}*/
+			@-webkit-keyframes style1{
+				0%{-webkit-transform: rotate(-10deg);}
+				100%{-webkit-transform: rotate(10deg);}
+			}
+			@keyframes style1{
+				0%{transform: rotate(-10deg);}
+				100%{transform: rotate(10deg);}
+			}
+			@-webkit-keyframes style3{
+				0%{-webkit-transform: rotate(-20deg);}
+				100%{-webkit-transform: rotate(20deg);}
+			}
+			@keyframes style3{
+				0%{transform: rotate(-20deg);}
+				100%{transform: rotate(20deg);}
+			}
+			/*@keyframes style3{
+				0%{transform: translate(0,-15px);}
+				12.5%{transform: translate(15px,-15px);}
+				25%{transform: translate(15px,0);}
+				37.5%{transform: translate(15px);}
+				50%{transform: translate(0,15px);}
+				62.5%{transform: translate(-15px,15px);}
+				75%{transform: translate(-15px,0);}
+				87.5%{transform: translate(-15px);}
+				100%{transform: translate(0,-15px);}
+			}*/
+			/*图标运动的动画*/
+			@-webkit-keyframes toBottom{
+				0%{left:0;top:0%;}
+				100%{top:110%;left:50%;}
+			}
+			@keyframes toBottom{
+				0%{left:0;top:0%;}
+				100%{top:110%;left:50%;}
+			}
+			@-webkit-keyframes toBottom-1{
+				0%{right:0;top:0%;}
+				100%{top:110%;right:80%;}
+			}
+			@keyframes toBottom-1{
+				0%{right:0;top:0%;}
+				100%{top:110%;right:80%;}
+			}
+			@-webkit-keyframes toBottom-2{
+				0%{left:100%;top:0%;}
+				100%{top:110%;left:0;}
+			}
+			@keyframes toBottom-2{
+				0%{left:100%;top:0%;}
+				100%{top:110%;left:0;}
+			}
+			/*长文字特定动画方案*/
+			@-webkit-keyframes textToBottom{
+				0%{left:10%;top:0%;opacity: 1;}
+				90%{opacity: 1;}
+				100%{left:10%;top:160%;opacity: 0;}
+			}
+			@keyframes textToBottom{
+				0%{left:10%;top:0%;}
+				90%{opacity: 1;}
+				100%{left:10%;top:160%;opacity: 0;}
+			}
+		</style>
+	</head>
+	<body>
+		<div style="text-align: center;">
+			<button class="btn1">效果1</button>
+			<button class="btn2">效果2</button>
+			<button class="btn3">效果3</button>
+			<button class="btn4">效果4</button>
+			<button class="btn5">效果5</button>
+		</div>
+		<div class="flutter"></div>
+		<script type="text/javascript">
+			//调用插件方法
+			$(function(){
+				var animationName = ["toBottom","toBottom-1","toBottom-2"];
+				var imgs=[
+					"imgs/dropOut/1/a_03.png",
+					"imgs/dropOut/1/a_06.png",
+					"imgs/dropOut/1/a_09.png",
+					"imgs/dropOut/1/a_15.png",
+					"imgs/dropOut/1/a_18.png",
+					"imgs/dropOut/1/a_21.png",
+					"imgs/dropOut/1/a_26.png",
+					"imgs/dropOut/1/a_31.png"
+				]
+				$(".btn1").on("click",function(){
+					$(".flutter").flutter({
+						images : imgs,
+						num : $().rnd(6,15),		//随机生成6到15个  方法：$().rnd(minNum,maxNum)
+						column:7,					//分在7列中展现
+						//延时再动的时间范围
+						delay:[0,1000],				//给每个图标随机停顿0至1000毫秒再执行动画
+						//到达时间范围
+						time:[1200,5000],			//在1.2秒至5秒内跑执行完动画
+						backgroundImage:["imgs/dropOut/1/bj1.png","imgs/dropOut/1/bj2.png"],
+						addClass:"style1",
+						animationName:animationName
+					});
+				});
+				$(".btn2").on("click",function(){
+					$(".flutter").flutter({
+						images : imgs,
+						num : 10,					//固定生成10个
+						column:$().rnd(6,10),		//随机在6至10列展现
+						backgroundImage:["imgs/dropOut/2/bj1.png","imgs/dropOut/2/bj2.png"],
+						addClass:"style2",
+						animationName:animationName
+					});
+				});
+				var imgs3=[
+					"imgs/dropOut/3/d_01.png",
+					"imgs/dropOut/3/d_03.png",
+					"imgs/dropOut/3/d_06.png",
+					"imgs/dropOut/3/d_11.png",
+					"imgs/dropOut/3/d_15.png",
+					"imgs/dropOut/3/d_19.png",
+					"imgs/dropOut/3/d_23.png",
+					"imgs/dropOut/3/d_26.png",
+					"imgs/dropOut/3/d_35.png",
+					"imgs/dropOut/3/d_38.png",
+					"imgs/dropOut/3/d_43.png",
+					"imgs/dropOut/3/d_46.png"
+				];
+				$(".btn3").on("click",function(){
+					$(".flutter").flutter({
+						images : imgs3,
+						num : $().rnd(6,15),
+						column:8,
+						backgroundImage:"imgs/dropOut/3/bj.gif",
+						animationName:animationName
+					});
+				});
+				var imgs4 =[
+					"imgs/dropOut/4/e_03.png",
+					"imgs/dropOut/4/e_06.png",
+					"imgs/dropOut/4/e_09.png",
+					"imgs/dropOut/4/e_15.png",
+					"imgs/dropOut/4/e_23.png",
+					"imgs/dropOut/4/e_27.png",
+					"imgs/dropOut/4/e_31.png",
+					"imgs/dropOut/4/e_35.png",
+					"imgs/dropOut/4/e_38.png",
+					"imgs/dropOut/4/e_03.png",
+					"imgs/dropOut/4/e_39.png"
+				];
+				$(".btn4").on("click",function(){
+					$(".flutter").flutter({
+						images : imgs4,
+						num : $().rnd(6,15),
+						column:6,
+						backgroundImage:"imgs/dropOut/4/bj.gif",
+						animationName:animationName
+					});
+				});
+				var imgs5=[
+					"imgs/dropOut/5/f_03.png",
+					"imgs/dropOut/5/f_06.png",
+					"imgs/dropOut/5/f_09.png",
+					"imgs/dropOut/5/f_12.png",
+					"imgs/dropOut/5/f_15.png",
+					"imgs/dropOut/5/f_18.png",
+					"imgs/dropOut/5/f_22.png",
+					"imgs/dropOut/5/f_26.png",
+					"imgs/dropOut/5/f_35.png",
+					"imgs/dropOut/5/f_38.png",
+					"imgs/dropOut/5/f_43.png",
+					"imgs/dropOut/5/f_46.png"
+				];
+				$(".btn5").on("click",function(){
+					$(".flutter").flutter({
+						images : imgs5,
+						num : $().rnd(6,8),
+						column:6,
+						animationName:"textToBottom",
+						backgroundImage:["imgs/dropOut/5/bj1.png","imgs/dropOut/5/bj2.png"],
+						addClass:"style3"
+					});
+				});
+			});
+		</script>
+	</body>
+</html>

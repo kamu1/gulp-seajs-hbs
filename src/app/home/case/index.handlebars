@@ -1,0 +1,47 @@
+<div class="my-case my-experience">
+	<div class="e-title nav-name nav-case" data-id="nav-case">
+		<label class="middle">
+		<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAABJElEQVQ4T8WUYVHDQBCFv+cAB1AF4IDioFUAKAAHEAWAAuqAOgAUAA6QUBQs8zIX5jguR6czme6vTLL73dt3uxEThCZgsh9oRMyBK+AA2AAPkl5aHTaVRsQF8FgBLCWtx8B/oBFxC5wDR0mZFebxBawl+cBq/IIm4E2jtU6SD21GCf0EDouKDysD3gF7eQcMKp1/WXrcQyNikS7DlzKE21y4ICJO0ssVcFyReZaDlQreaonJ06fkb6vlV0k/ggy1R6WPfVJE1OwYg88kOR9DfcJzlmmPVo0OWor72sHT++RpB/jZLef+/nfh+fdZefueSdvhDdo1utrwe2xOdyUCyxp0bDW3OcczPa/ufpoIz25tJmtww7wc15I2+/n1bdNzmTOJ0m9IPGIJfOyGnAAAAABJRU5ErkJggg==" alt="">	
+		</label>
+		<span>项目案例</span>
+	</div>
+	<div class="e-list c-list">
+		<ul class="n">
+			{{#each list}}
+			{{#if title}}
+			<li>
+				<div class="l-info l-project">
+					<div class="l-name">
+						{{#if links}}
+						<div class="l-menu" tabindex="-1">
+							<span tabindex="-1"></span>
+							<div class="J-link-btn">
+							{{#each links}}
+								<span class="{{{class}}}" data-link="{{url}}">{{#if title}}{{title}}{{else}}访问·PC版{{/if}}</span>
+							{{/each}}
+							</div>
+						</div>
+						{{/if}}
+						{{title}}
+					</div>
+					{{#if images}}
+					<div class="l-imgs swiper-container swiper-V">
+						<div class="swiper-wrapper">
+							<div class="l-img swiper-slide">
+							{{#each images}}
+							<span><img data-src="{{url}}" class="lazy-load" alt=""></span>
+							{{/each}}
+							</div>
+						</div>
+					</div>
+					<div class="img-tri"></div>
+					{{/if}}
+					<div class="l-post">{{label}}</div>
+					<div class="l-summary">{{{summary}}}</div>
+				</div>
+			</li>
+			{{/if}}
+			{{/each}}
+		</ul>
+	</div>
+</div>

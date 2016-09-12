@@ -1,0 +1,27 @@
+<div id="personal-info" class="personal-info vmc">
+	<div class="i-list">
+		<ul class="n">
+		{{#each list}}
+			{{#if title}}
+			<li>
+				<div>
+				<label class="middle">
+					{{#if icoUrl}}<img data-src="{{icoUrl}}" class="lazy-load" alt="">{{/if}}
+				</label>
+				<span {{#if style}}style="{{{style}}}"{{/if}}>{{title}}</span>
+				</div>
+			</li>
+			{{/if}}
+		{{/each}}
+			<li class="ma-pic">
+				<h2>关于简历</h2>
+				<div>简历在以下前端环境构建完成
+					<div>Gulp+BrowserSync+Seajs+Handlebars</div>
+					<div style="white-space: normal;margin-right: 10px;"><div style="display: inline-block;text-align: left;max-width: 300px;">主要实现了：模块化响应式开发，CSS代码压缩合并，Seajs代码依赖合并压缩，HTML代码压缩，合并文件组，图片自动压缩，自定义参数，多任务配制等功能。大大减少了文件加载数量，极大的优化了页面加载体验！</div></div>
+				</div>
+				<div style="margin-top: 15px;"><img data-src="{{imgsPath}}/id98.png" class="lazy-load" alt=""></div>
+				<div>id98.com</div>
+			</li>
+		</ul>
+	</div>
+</div>

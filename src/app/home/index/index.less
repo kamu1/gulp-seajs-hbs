@@ -1,0 +1,389 @@
+@import "../common/common";
+html,body{
+	height:100%;
+	padding:0;
+	margin: 0;
+	color: #333;
+	font-family: "PingFang-SC-Light","微软雅黑","黑体";
+	font-size: 14px;
+	overflow: hidden;
+	-webkit-user-select:none;
+	user-select:none;
+}
+*{ -webkit-tap-highlight-color: rgba(0,0,0,0);-webkit-tap-highlight-color: transparent; /* For some Androids */ }  
+img{vertical-align: top;}
+*:focus{outline: none;}
+/*首行空两格*/
+.ti2{text-indent: 2em;}
+/*n清空默认样式*/
+.n{padding:0;margin:0;list-style: none;text-decoration: none;}
+/*内容垂直居中*/
+.vmc{text-align: center; overflow: hidden;}
+.vml{text-align: left}.vmr{text-align: right}
+.vmc,.vml,.vmr{white-space:nowrap;letter-spacing:-0.5em}
+.vmc:after,.vml:after,.vmr:before{content:"";display:inline-block;height:100%;width:0;overflow:hidden;vertical-align:middle}
+.vmc>*,.vml>*,.vmr>*{display:inline-block;vertical-align:middle;text-align:left;letter-spacing:normal;white-space:normal}
+.vmc>img{max-width: 100%;max-height: 100%;}
+/*单对象垂直居中,对block和inline-block起作用*/
+.middle{position: relative;}
+.middle>*{position: absolute;top:0;left:0;right: 0;bottom: 0;margin: auto;}
+/*页面样式开始*/
+#checkbox-hide-nav{
+	display: none;
+	&:checked{
+		+*{
+			.page-sidebar{
+				margin-left:-50%;
+				overflow: hidden;
+			}
+			.page-content{
+				.hide-left-nav{
+					&:after{
+						margin-left:-2px;
+						border-left-color: rgba(0,0,0,.3);
+						border-left-width: 6px;
+						border-right-width: 0;
+
+					}
+				}
+			}
+		}
+	}
+}
+.page-main{
+	background: @background;
+	max-width: 750px;
+	min-width: 320px;
+	height:100%;
+	margin: auto;
+	>*{
+		height: 100%;
+	}
+	ul{
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	.page-sidebar{
+		position: relative;
+		z-index: 4;
+		float: left;
+		color: #FFF;
+		width:30%;
+		min-width: 100px;
+		max-width: 160px;
+		background: @navBgColor;
+		transition-duration: 300ms;
+		/*border-radius: 0 60px 60px 0;*/
+		.sidebar-info{
+			text-align: center;
+			overflow: hidden;
+			.s-img{
+				margin: auto;
+				margin-top:20px;
+				width:65%;
+				border-radius: 50%;
+				overflow: hidden;
+				background: #f3f3f3;
+				border:3px solid rgba(0,123,210,.6);
+				position: relative;
+				box-shadow: 0 3px 3px rgba(0,0,0,.3);
+				img:first-child{
+					max-width: 100%;
+					position: absolute;
+					top:0;left:0;right:0;bottom:0;
+					margin:auto;
+					&+img{
+						width:100%;
+						vertical-align: top;
+					}
+				}
+			}
+			.s-name{
+				font-size: 22px;
+				text-align: center;
+				color: #FFF;
+				margin-top:10px;
+			}
+			.s-summary{
+				font-size: 12px;
+				padding:15px 0;
+				margin: auto;
+				width: 90%;
+				position: relative;
+				filter: ~"alpha(opacity=85)";
+				opacity: .85;
+				&:after{
+					content:"";
+					position: absolute;
+					bottom:0;
+					left:0;
+					width:100%;
+					border-bottom: 1px solid #FFF;
+					opacity: .3;
+				}
+			}
+		}
+		.sidebar-nav{
+			margin-top:20px;
+			ul{
+				margin-left: 8px;
+				vertical-align: top;
+				li{
+					height: 36px;
+					line-height: 36px;
+					cursor:pointer;
+					margin-bottom: 2px;
+					transition-duration: 200ms;
+					text-align: center;
+					>div{
+						display: inline-block;
+						vertical-align: top;
+						min-width: 4em;
+						text-align: left;
+					}
+					&.active{
+						background: @background;
+						color: @navBgColor;
+						border-radius: 5px 0 0 5px;
+						box-shadow:-2px 1px 2px rgba(0,0,0,.3);
+						font-weight: bold;
+						position: relative;
+						&:hover{
+							opacity:1;
+						}
+						&:before,&:after{
+							content:"";
+							position: absolute;
+							right:0;
+							width:10px;
+							height:10px;
+						}
+						&:before{
+							bottom:100%;
+							background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAwOS8wNi8xNl5WaRsAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzbovLKMAAAANElEQVQImV3IMQ3AMBDF0N8gCJRCCKRACrRj8rpkqM6SB/tBGmv0k+QN/k5UH8eNhY1y+QBZsjZxUFhBdwAAAABJRU5ErkJggg==) right bottom no-repeat;
+						}
+						&:after{
+							top:100%;
+							background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAwOS8wNi8xNl5WaRsAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzbovLKMAAAANElEQVQImV3JUQ3AIBTF0DsUIGmSkIQkJODk7Gck5DXpTxu8GNh+ctkxazxjP0hhtFqSrA9SRjdBcKmReQAAAABJRU5ErkJggg==) right top no-repeat;
+						}
+					}
+					&.active2{
+						background: #FFF;
+						color: @navBgColor;
+						border-radius: 5px;
+						position: relative;
+						box-shadow:-1px -2px 2px rgba(0,0,0,.3);
+						&:after{
+							content: "";
+							position:absolute;
+							top:50%;
+							left:100%;
+							margin-top:-5px;
+							border:10px solid transparent;
+							border-left-color: #FFF;
+							border-bottom-width: 0;
+						}
+						&.to-up{
+							box-shadow:-1px 2px 2px rgba(0,0,0,.3);
+							&:after{
+								border-bottom-width:10px;
+								border-top-width: 0;
+							}
+						}
+						/*&:hover,&:active{
+							opacity: 1;
+						}*/
+						~*{
+							border-radius: 5px;
+						}
+					}
+				}
+			}
+		}
+	}
+	.page-content{
+		overflow: hidden;
+		.c-info{
+			height: 100%;
+			overflow: auto;
+			position: relative;
+			>.swiper-container{
+				position: absolute;
+				top:0;
+				left:0;
+				width:100%;
+				height: 100%;
+			}
+			>.personal-info{
+				&.active{
+					+.hide-left-nav{
+						display: none;
+					}
+				}
+			}
+			.hide-left-nav{
+				position: fixed;
+				right:10px;
+				bottom: 10px;
+				z-index: 10;
+				width:22px;
+				height:22px;
+				border: 2px solid rgba(0,0,0,.1);
+				background: rgba(0,0,0,.1);
+				border-radius: 50%;
+				/*box-shadow: 0 0 10px 1px #FFF;*/
+				&:after{
+					content:"";
+					position: absolute;
+					left:50%;
+					top:50%;
+					width:0;
+					height: 0;
+					margin-left:-4px;
+					margin-top:-6px;
+					border: 6px solid transparent;
+					border-right-color: rgba(0,0,0,.3);
+					border-left-width: 0;
+
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-height: 480px) {
+	.page-main{
+		.page-sidebar{
+			.sidebar-info{
+				.s-img{
+					margin-top:10px;
+					width:50px;
+				}
+				.s-name{
+					font-size: 18px;
+				}
+				.s-summary{
+					padding:8px;
+				}
+			}
+			.sidebar-nav{
+				margin-top:10px;
+				ul{
+					li{
+						margin-bottom: 5px;
+						height: 30px;
+						line-height: 30px;
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (max-height: 400px) { /*当屏幕高小于480时*/
+	.page-main{
+		.page-sidebar{
+			min-width: 10em;
+			.sidebar-info{
+				.s-img{
+					margin-top:10px;
+					width:50px;
+				}
+				.s-name{
+					font-size: 18px;
+				}
+			}
+			.sidebar-nav{
+				margin-top:10px;
+				ul{
+					text-align: center;
+					overflow: hidden;
+					li{
+						float: left;
+						width:50%;
+						margin-bottom: 10px;
+						/*height: 34px;
+						line-height: 34px;*/
+						/*display: inline-block;*/
+						>div{
+							display: inline-block;
+						}
+						&.active{
+							background: none;
+							box-shadow:none;
+							border-radius: 5px;
+							&:hover{
+								opacity:1;
+							}
+							&:before,&:after{
+								display: none;
+							}
+							>div{
+								background: #FFF;
+								padding:0 5px;
+								text-align: center;
+								border-radius: 5px;
+							}
+						}
+						&.active2{
+							background: #FFF;
+							color: @navBgColor;
+							border-radius: 5px;
+							position: relative;
+							box-shadow:none;
+							&:after{
+								display:none;
+							}
+							&.to-up{
+								box-shadow:none;
+								&:after{
+									display:none;
+								}
+							}
+							/*&:hover,&:active{
+								opacity: 1;
+							}*/
+							~*{
+								border-radius: 5px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.page-main .page-content .c-info .personal-info div.i-list ul li{
+		margin-bottom: 8px;
+	}
+	.page-main .page-content .c-info .personal-info div.i-list ul li.ma-pic{
+		line-height: 1.8em;
+		h2{
+			margin:10px 0;
+		}
+	}
+	.page-main .page-content .c-info .personal-info div.i-list ul li.ma-pic img{
+		max-height: 110px;
+	}
+}
+@media screen and (max-height: 350px) {
+	.page-main{
+		.page-sidebar{
+			min-width: 10em;
+		}
+	}
+	.page-main .page-sidebar div.sidebar-nav ul li{
+		height: 34px;
+		line-height: 34px;
+		margin-bottom: 0;
+	}
+	.page-main .page-content .c-info .personal-info div.i-list ul li.ma-pic{
+		line-height: 1.6em;
+		h2{
+			margin:10px 0;
+			font-size: 16px;
+		}
+	}
+	.page-main .page-content .c-info .personal-info div.i-list ul li.ma-pic img{
+		max-height: 90px;
+	}
+}

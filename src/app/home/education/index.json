@@ -1,0 +1,14 @@
+{
+    "list": [{
+            "datetime": "2001-09至2004-06",
+            "name": "怀化学院",
+            "professional": "计算机应用（高职）",
+            "summary": "主修：DOS、windows、办公软件、电脑组装与维护、局域网组建；C语言，QBASIC、FoxPro、VisualBasic、Flash、并自学ASP语言、网页设计、ACCESS等，03年在校实习培训过国家计算机一级学员的实训课程，04年为母校开发过一套校友录平台。"
+        },{
+            "datetime": "2006-09至2009-06",
+            "name": "保险学院",
+            "professional": "计算机网络（大专）",
+            "summary": "主修：C++、java、ASP、PhotoShop、MS-SQL及保险相关课程，在强烈的兴趣下利用课余时间专研FW页面设计和前端技术开发DIV+CSS+javascript（jQuery,ajax,json）、XML等，并参与主力开发了保险大学在线视频培训考证系统。"
+        }
+    ]
+}

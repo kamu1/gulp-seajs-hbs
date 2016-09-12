@@ -1,0 +1,119 @@
+@import "../common/common";
+.my-experience{
+	margin-left:8px;
+	margin-bottom: 2em;
+	.e-title{
+		color: #FFF;
+		margin-top: 10px;
+		font-size: 12px;
+		white-space: nowrap;
+		label{
+			overflow: hidden;
+			position: relative;
+			display: inline-block;
+			vertical-align: middle;
+			width:24px;
+			height: 24px;
+			>img{
+				z-index: 2;
+				max-width: 60%;
+			}
+			&:before{
+				content:"";
+				position: absolute;
+				top:0;
+				left:0;
+				width:100%;
+				height: 100%;
+				background: @navTitleBg;
+				border-radius: 5px 0 0 5px;
+			}
+		}
+		span{
+			background: @navTitleBg;
+			display: inline-block;
+			vertical-align: middle;
+			letter-spacing:1px;
+			height:24px;
+			line-height: 24px;
+			margin-left: 1px;
+			padding: 0 10px;
+			border-radius: 0 5px 5px 0;
+		}
+	}
+	.e-list{
+		li{
+			margin-top: 10px;
+			position: relative;
+			.l-sign{
+				position: absolute;
+				top:9px;
+				left:0;
+				height:0px;
+				width:0px;
+				border: 5px solid transparent;
+				border-left-color: @navTitleBg;
+
+			}
+			.l-info{
+				margin: 0 10px;
+				/*line-height: 2em;*/
+				font-size: 13px;
+				>*{
+					padding:3px 0;
+				}
+				.l-time{
+					color: @navTitleBg;
+					font-size: 15px;
+				}
+				.l-name{
+					font-size: 15px;
+				}
+				.l-post{
+					/*text-indent: 2em;*/
+					color: @navTitleBg;
+					opacity: .7;
+				}
+				.l-summary{
+					color:#777;
+					text-indent: 2em;
+					line-height: 1.6em;
+					>*{
+						text-indent: 2em;
+						margin:0;padding:0;
+						padding-top:5px;
+					}
+				}
+				&.l-evaluate{
+					.l-name{
+						line-height: 1.7em;
+					}
+				}
+				&.l-project{
+					.l-summary,.l-content{
+						>*{
+							text-indent: 2em;
+							margin:0;padding:0;
+							padding-top:5px;
+						}
+					}
+					.l-summary{
+						text-indent: 0;
+						&:before{
+							content:attr(data-label);
+							color: @navTitleBg;
+						}
+					}
+					.l-content{
+						text-indent: 0;
+						color:#888;
+						&:before{
+							content:attr(data-label);
+							color: @navTitleBg;
+						}
+					}
+				}
+			}
+		}
+	}
+}

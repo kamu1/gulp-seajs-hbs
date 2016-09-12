@@ -1,0 +1,24 @@
+<div class="my-experience">
+	<div class="e-title nav-name nav-project" data-id="nav-project">
+		<label class="middle">
+		<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABRElEQVQ4T72U4VHDMAyFvzcBMAF0AroB7QSUCegI2YAyAbAB3aCdgG5A2KBsUCYQ93J2LkBo4yuHfjmO/Fl6kiX+2GReRDwDV5JGx/IzcJOAzfcx9gMYEXPgvAD6JGmX/fuATbQFwKkkn2nsX4ALYFIQ4WxvygWgXte+lB+Byx7vd2Ahabvv0qEaLoEqpxYRLkItqfoOHwJ0ZGNglqq/AvwQ3CoGus3WkrzXW2UfNCDbxm0RET788Eu6besMfikR4cq/AG/WMoEd1QkwytoOSfkMcKFuE+RGktP2DDD4Lu0vJc2HAKfARdLwGriX1ESYhoovWgMr6zgE6LdaRYR1fe2k6qULgqR2qPQBffC0I/5OUt2J5iPpZpe8bqMuKUpzUap47baRNIkId4U7oZk4GWhNxpL886ClEbftTpkv0+YgocDhEze6yBVTwy9nAAAAAElFTkSuQmCC" alt="">	
+		</label>
+		<span>项目经验</span>
+	</div>
+	<div class="e-list">
+		<ul class="n">
+		{{#each list}}
+			<li>
+				<div class="l-sign"></div>
+				<div class="l-info l-project">
+					{{#if datetime}}<div class="l-time">{{datetime}}</div>{{/if}}
+					{{#if name}}<div class="l-name">{{name}}</div>{{/if}}
+					{{#if environment}}<div class="l-post">{{environment}}</div>{{/if}}
+					{{#if pDescription}}<div class="l-summary" data-label="项目描述：">{{{pDescription}}}</div>{{/if}}
+					{{#if jDescription}}<div class="l-content" data-label="职责描述：">{{{jDescription}}}</div>{{/if}}
+				</div>
+			</li>
+		{{/each}}
+		</ul>
+	</div>
+</div>

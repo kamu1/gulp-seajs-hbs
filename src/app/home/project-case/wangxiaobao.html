@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>网销宝</title>
+		<link href="https://cdn.bootcss.com/Swiper/3.3.1/css/swiper.min.css" rel="stylesheet">
+		<link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+		<script src="https://cdn.bootcss.com/jquery/1.12.1/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
+		<style>
+			html,
+			body {
+				height: 100%;
+				margin: 0;
+				padding: 0;
+				font-family: "微软雅黑";
+			}
+			.n{list-style: none;margin:0;padding:0;}
+			.hp100{height:100%;}
+			/*其下内容垂直居中*/
+			.vmc{text-align: center; overflow: hidden;}
+			.vml{text-align: left}.vmr{text-align: right}
+			.vmc,.vml,.vmr{white-space:nowrap;letter-spacing:-0.5em}
+			.vmc:after,.vml:after,.vmr:before{content:"";display:inline-block;height:100%;width:0;overflow:hidden;vertical-align:middle}
+			.vmc>*,.vml>*,.vmr>*{display:inline-block;vertical-align:middle;text-align:left;letter-spacing:normal;white-space:normal}
+			.vmc>img{max-width: 100%;max-height: 100%;}
+			
+			.animated{opacity: 0;}
+			.dey1{-webkit-animation-delay:100ms;animation-delay:100ms}
+			.dey2{-webkit-animation-delay:200ms;animation-delay:200ms}
+			.dey3{-webkit-animation-delay:300ms;animation-delay:300ms}
+			.dey4{-webkit-animation-delay:400ms;animation-delay:400ms}
+			.dey5{-webkit-animation-delay:500ms;animation-delay:500ms}
+			.dey6{-webkit-animation-delay:600ms;animation-delay:600ms}
+			.dey7{-webkit-animation-delay:700ms;animation-delay:700ms}
+			.dey8{-webkit-animation-delay:800ms;animation-delay:800ms}
+			.dey9{-webkit-animation-delay:900ms;animation-delay:900ms}
+			.dey10{-webkit-animation-delay:1000ms;animation-delay:1000ms}
+			.dey11{-webkit-animation-delay:1100ms;animation-delay:1100ms}
+			.dey12{-webkit-animation-delay:1200ms;animation-delay:1200ms}
+			.dey13{-webkit-animation-delay:1300ms;animation-delay:1300ms}
+			.dey14{-webkit-animation-delay:1400ms;animation-delay:1400ms}
+			.dey15{-webkit-animation-delay:1500ms;animation-delay:1500ms}
+			.dey16{-webkit-animation-delay:1600ms;animation-delay:1600ms}
+			.dey17{-webkit-animation-delay:1700ms;animation-delay:1700ms}
+			.dey18{-webkit-animation-delay:1800ms;animation-delay:1800ms}
+			.dey19{-webkit-animation-delay:1900ms;animation-delay:1900ms}
+			.dey20{-webkit-animation-delay:2000ms;animation-delay:2000ms}
+			.dey21{-webkit-animation-delay:2100ms;animation-delay:2100ms}
+			.dey22{-webkit-animation-delay:2200ms;animation-delay:2200ms}
+			.dey23{-webkit-animation-delay:2300ms;animation-delay:2300ms}
+			.dey24{-webkit-animation-delay:2400ms;animation-delay:2400ms}
+			.dey25{-webkit-animation-delay:2500ms;animation-delay:2500ms}
+			.dey26{-webkit-animation-delay:2600ms;animation-delay:2600ms}
+			.dey27{-webkit-animation-delay:2700ms;animation-delay:2700ms}
+			.dey28{-webkit-animation-delay:2800ms;animation-delay:2800ms}
+			.dey29{-webkit-animation-delay:2900ms;animation-delay:2900ms}
+			.dey30{-webkit-animation-delay:3000ms;animation-delay:3000ms}
+			.dey35{-webkit-animation-delay:3500ms;animation-delay:3500ms}
+			.dey40{-webkit-animation-delay:4000ms;animation-delay:4000ms}
+			.dey45{-webkit-animation-delay:4500ms;animation-delay:4500ms}
+			.dey50{-webkit-animation-delay:5000ms;animation-delay:5000ms}
+			
+			.sca05{-webkit-transform: scale(0.5);transform: scale(0.5);}
+		    .sca06{-webkit-transform: scale(0.6);transform: scale(0.6);}
+		    .sca07{-webkit-transform: scale(0.7);transform: scale(0.7);}
+		    .sca08{-webkit-transform: scale(0.8);transform: scale(0.8);}
+		    .sca09{-webkit-transform: scale(0.9);transform: scale(0.9);}
+		    .sca1{-webkit-transform: scale(1);transform: scale(1);}
+			.swiper-container {
+				height: 100%;
+			}
+			
+			.swiper-container .swiper-slide {
+				height: 100%;
+			}
+			
+			.swiper-container-vertical>.swiper-pagination-bullets {
+				width: 20px;
+				bottom: auto;
+				left: auto;
+				right: 5%;
+				top:50%;
+				-webkit-transform: translate3d(0,-50%,0);
+				transform: translate3d(0,-50%,0);
+			}
+			.swiper-pagination-bullet{background:#F57917;width:20px;height:20px;display: block;margin-top: 14px;opacity: 1;transition-duration: 200ms;}
+			.swiper-pagination-bullet-active{background:#F57917;height: 38px;border-radius: 20px;}
+			.swiper-slide{position: relative;}
+			.s_1{background: url(https://img.alicdn.com/tps/TB1QfVDKpXXXXcmXpXXXXXXXXXX-1920-1080.jpg) center;}
+			.s_2{background: url(https://img.alicdn.com/tps/TB1LL4jKpXXXXXpaXXXXXXXXXXX-1920-1080.jpg) center;}
+			.s_3{background: url(https://img.alicdn.com/tps/TB1qYRgKpXXXXbaaXXXXXXXXXXX-1920-1080.jpg) center;}
+			.s_4{background: url(https://img.alicdn.com/tps/TB1vK0KKpXXXXXTXpXXXXXXXXXX-1920-1076.jpg) center;}
+			.swiper-slide .abs_{position: absolute;top:0;left:0;width: 100%;}
+			.s_1 .logo_{width:1000px;margin:auto;position: relative;}
+			.s_1 .logo_ img{position: absolute;top:0;left:-180px;}
+			.s_1 .block_{color:#FFF;text-align:center;width:1100px;min-height: 300px;}
+			.s_1 .block_ h1{font-size: 100px;}
+			.s_1 .block_ h4{padding-top:10px;font-size: 40px;color: #ff6101;letter-spacing:3px;font-weight:normal}
+			.s_1 .block_ h2{padding-top:10px;font-size: 70px;font-weight:200;line-height: 1em;}
+			.s_1 .block_ h2:before,.s_1 .block_ h2:after{content:"";display: inline-block;width:160px;vertical-align: middle;border-bottom: 1px solid #FFF;}
+			.s_1 .block_ h2 span{display: inline-block;vertical-align: middle;margin:auto 20px;letter-spacing: 5px;}
+			.s_1 .boot_{padding-top:70px;}
+			.s_1 .boot_>*{
+				width:154px;height:156px;display: inline-block;margin-left: 55px;
+				background: url(https://img.alicdn.com/tps/TB1ar4NKpXXXXXhXpXXXXXXXXXX-154-156.png) center no-repeat;
+			}
+			.s_1 .boot_>*:first-child{margin-left: auto;}
+			.s_1 .boot_ span{display: block;font-size: 29px;color: #FFF;text-align: center;}
+			
+			.s_2 .block_{color:#ff760c;text-align:center;width:1180px;min-height: 300px;}
+			.s_2 .block_ .pic_{width: 467px;float: right;position: relative;}
+			.s_2 .block_ .pic_>*{position: absolute;top:0;left: 0;}
+			.s_2 .block_ .pic_>*:first-child{position: relative;}
+			.s_2 .block_ .text_{font-size:24px;margin-right: 500px; text-align: left;}
+			.s_2 .block_ .text_ h1{font-size: 46px;position: relative;padding-bottom: 40px;margin-bottom:35px;font-weight: normal;}
+			.s_2 .block_ .text_ h1:after{content: "";position: absolute;left:0;bottom: 0;width:100px;height:10px;background:#ff760c}
+			.s_2 .block_ .text_ li{margin-top:25px;}
+			.s_2 .block_ .text_ li:first-child{margin-top:0;}
+
+			.s_3 .block_{color:#F14900;text-align:center;width:1280px;min-height: 300px;}
+			.s_3 .block_ .pic_{width: 691px;float: left;position: relative;}
+			.s_3 .block_ .pic_>*{position: absolute;top:0;left: 0;}
+			.s_3 .block_ .pic_>*:first-child{position: relative;}
+			.s_3 .block_ .text_{font-size:24px;margin-left: 700px; text-align: left;}
+			.s_3 .block_ .text_ h1{font-size: 46px;position: relative;padding-bottom: 40px;margin-bottom:35px;font-weight: normal;}
+			.s_3 .block_ .text_ h1:after{content: "";position: absolute;left:0;bottom: 0;width:100px;height:10px;background:#ff760c}
+			.s_3 .block_ .text_ li{margin-top:25px;}
+			.s_3 .block_ .text_ li:first-child{margin-top:0;}
+			.s_3 .block_ .text_ .list_{margin-top: 10px;}
+			.s_3 .block_ .text_ .list_t{padding-bottom: 20px;}
+			.s_3 .block_ .text_ .list_:before{content:"";display:inline-block;vertical-align:middle;margin-right:10px;width:13px;height:13px;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALBAMAAABbgmoVAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAPUExURQAAAP/oaPmhOvzIU/JKAd8sEtIAAAAEdFJOUwAr6oIgrDbxAAAAL0lEQVQI12NgYBAWYAACRhVFECXk4iQA4ri4KII4LiCuCZByMYDxoHJQlTB9YFMAJAoHk+Erh8AAAAAASUVORK5CYII=) center no-repeat}
+
+			.s_4 .block_{color:#ff760c;text-align:center;width:1280px;min-height: 300px;}
+			.s_4 .block_ .pic_{width: 720px;float: right;position: relative;right:-30px}
+			.s_4 .block_ .pic_>*{position: absolute;top:0;left: 0;}
+			.s_4 .block_ .pic_>*:first-child{position: relative;}
+			.s_4 .block_ .text_{font-size:24px;margin-right: 720px; text-align: left;}
+			.s_4 .block_ .text_ h1{font-size: 46px;position: relative;padding-bottom: 40px;margin-bottom:35px;font-weight: normal;}
+			.s_4 .block_ .text_ h1:after{content: "";position: absolute;left:0;bottom: 0;width:100px;height:10px;background:#ff760c}
+			.s_4 .block_ .text_ li{margin-top:25px;}
+			.s_4 .block_ .text_ li:first-child{margin-top:0;}
+			.s_4 .block_ .text_ .list_{margin-top: 10px;}
+			.s_4 .block_ .text_ .list_t{padding-bottom: 20px;min-height:4em;position: relative;}
+			.s_4 .block_ .text_ .list_t>*{width: 122%;position: absolute;}
+			.s_4 .block_ .text_ .list_:before{content:"";display:inline-block;vertical-align:middle;margin-right:10px;width:13px;height:13px;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALBAMAAABbgmoVAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAPUExURQAAAP/oaPmhOvzIU/JKAd8sEtIAAAAEdFJOUwAr6oIgrDbxAAAAL0lEQVQI12NgYBAWYAACRhVFECXk4iQA4ri4KII4LiCuCZByMYDxoHJQlTB9YFMAJAoHk+Erh8AAAAAASUVORK5CYII=) center no-repeat}
+			
+			.fix_center{background:#CCC;background:rgba(0,0,0,.9);position:fixed;top:0;left:0;width:100%;height:100%;z-index:100;transition-duration:300ms}
+			.fix_center>*{width:900px;height:550px;position:absolute;top:0;left:0;right:0;bottom:0;margin:auto}
+			.fix_center>* a{position:absolute;top:0;right:0;width:58px;height:58px}
+			
+			.floatbar{height:30px;width:100%;position:absolute;top:0;z-index:2;left:0;overflow:hidden;text-align:center;background:#33b9f7 url(https://img.alicdn.com/tps/TB169X1KpXXXXasXXXXXXXXXXXX-1190-300.png) center no-repeat;background-size:100% auto;transition-duration:300ms}
+			.floatbar img{max-width:100%;opacity:0;transition-duration:300ms}
+			.floatbar:hover{height:300px;background:url();opacity:1}
+			.floatbar:hover img{display:inline-block;opacity:1}
+
+			.block_,.logo_{transition-duration: 300ms;}
+			@media screen and (max-width: 1610px) {
+				.block_{-webkit-transform: scale(0.8);transform: scale(0.8);}
+			}
+			@media screen and (max-width: 1410px) {
+				.block_{-webkit-transform: scale(0.7);transform: scale(0.7);}
+			}
+			@media screen and (max-width: 1300px) {
+				.block_{-webkit-transform: scale(0.55);transform: scale(0.55);}
+				.s_1 .logo_{width: 750px}
+			}
+		</style>
+	</head>
+
+	<body>
+	<div style="height: 100%;position: relative;">
+		<div class="floatbar">
+	        <img src="https://img.alicdn.com/tps/TB169X1KpXXXXasXXXXXXXXXXXX-1190-300.png">
+	    </div>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide s_1">
+					<div class="abs_">
+						<div class="logo_"><img class=" ani_ animated" data-in="fadeIn" src="https://img.alicdn.com/tps/TB1kZlCKpXXXXX2XFXXXXXXXXXX-264-165.png"/></div>
+					</div>
+					<div class="vmc hp100">
+						<div class="block_ ">
+							<ul class="n">
+								<li><h1 class="n ani_ animated dey1" data-in="fadeInDown">阿里巴巴营销人才认证</h1></li>
+								<li><h4 class="n ani_ animated dey2" data-in="fadeInUp">ALIBABA MACKETING TALENG CERTIFICATION</h4></li>
+								<li><h2 class="n ani_ animated dey3" data-in="fadeInUp"><span>权威认证 彰显实力</span></h2></li>
+								<li class="boot_ replay_">
+									<a href="javascript:;" class="vmc ani_ animated dey3" data-in="fadeInUp">
+										<div>
+											<span>营销人才</span>
+											<span>认证介绍</span>
+										</div>
+									</a>
+									<a href="javascript:;" class="vmc ani_ animated dey4" data-in="fadeInUp">
+										<div>
+											<span>个人认证</span>
+											<span>介绍</span>
+										</div>
+									</a>
+									<a href="javascript:;" class="vmc ani_ animated dey5" data-in="fadeInUp">
+										<div>
+											<span>师资认证</span>
+											<span>介绍</span>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide s_2">
+					<div class="vmc hp100">
+						<div class="block_">
+							<div class="pic_">
+								<div><img class=" ani_ animated dey1" data-in="fadeInUp" src="https://img.alicdn.com/tps/TB1n6xvKpXXXXXvXVXXXXXXXXXX-467-443.png"/></div>
+								<div><img class=" ani_ animated dey3" data-in="fadeInDown" src="https://img.alicdn.com/tps/TB11ORQKpXXXXbMXpXXXXXXXXXX-467-443.png"/></div>
+							</div>
+							<div class="text_ ani_ animated" data-in="fadeIn">
+								<ul class="n">
+									<li><h1>什么是阿里巴巴营销人才认证？</h1></li>
+									<li>致力于互联网B类营销领域的人力资源发展和营销生态系统建设。</li>
+									<li>阿里巴巴营销人才认证是1688网销宝营销领域首个认证品牌，是1688网销宝推出的一套完整的培训体系和认证计划，由1688网销宝设立并运作。</li>
+									<li>目前阿里巴巴营销人才认证分两大体系：<b>个人认证和师资认证</b></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide s_3">
+					<div class="vmc hp100">
+						<div class="block_">
+							<div class="pic_">
+								<div><img class=" ani_ animated dey1" data-in="fadeIn" src="https://img.alicdn.com/tps/TB1fJR4KpXXXXXoXXXXXXXXXXXX-691-493.png"/></div>
+								<div><img class=" ani_ animated dey6" data-in="fadeIn" src="https://img.alicdn.com/tps/TB1l10sKpXXXXXraXXXXXXXXXXX-691-493.png"/></div>
+								<div><img class=" ani_ animated dey6" data-in="fadeIn" src="https://img.alicdn.com/tps/TB1IdxTKpXXXXXEXpXXXXXXXXXX-691-493.png"/></div>
+								<div><img class=" ani_ animated dey6" data-in="fadeIn" src="https://img.alicdn.com/tps/TB1a1FYKpXXXXXpXXXXXXXXXXXX-691-493.png"/></div>
+								<div><img class=" ani_ animated dey7" data-in="fadeInUp" src="https://img.alicdn.com/tps/TB1p9JUKpXXXXXZXXXXXXXXXXXX-691-493.png"/></div>
+								<div><img class=" ani_ animated dey8" data-in="fadeInUp" src="https://img.alicdn.com/tps/TB1YiV1KpXXXXXkXXXXXXXXXXXX-691-493.png"/></div>
+								<div><img class=" ani_ animated dey9" data-in="fadeInUp" src="https://img.alicdn.com/tps/TB1OLpLKpXXXXXhXFXXXXXXXXXX-691-493.png"/></div>
+							</div>
+							<div class="text_ ani_ animated" data-in="fadeIn">
+								<ul class="n">
+									<li><h1>个人认证</h1></li>
+									<li class="list_t">个人认证是针对阿里巴巴B类营销行业从业人员的职业资格认证，共分三个级别：</li>
+									<li class="list_">初级——阿里巴巴营销人才认证-营销专员</li>
+									<li class="list_">中级——阿里巴巴营销人才认证-营销顾问</li>
+									<li class="list_">高级——阿里巴巴营销人才认证-营销专家</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide s_4">
+					<div class="vmc hp100">
+						<div class="block_">
+							<div class="pic_">
+								<div><img class=" ani_ animated dey8" data-in="fadeInRight" src="https://img.alicdn.com/tps/TB1qENAKpXXXXbGXFXXXXXXXXXX-720-367.png"/></div>
+								<div><img class=" ani_ animated dey1" data-in="fadeIn" src="https://img.alicdn.com/tps/TB1wZVYKpXXXXXSXXXXXXXXXXXX-720-367.png"/></div>
+								<div><img class=" ani_ animated dey3" data-in="fadeIn" src="https://img.alicdn.com/tps/TB1EzNMKpXXXXaQXpXXXXXXXXXX-720-367.png"/></div>
+								<div><img class=" ani_ animated dey5" data-in="fadeIn" src="https://img.alicdn.com/tps/TB1DzpEKpXXXXc5XpXXXXXXXXXX-720-367.png"/></div>
+							</div>
+							<div class="text_ ani_ animated" data-in="fadeIn">
+								<ul class="n">
+									<li><h1>师资认证</h1></li>
+									<li class="list_t"><div>1688网销宝讲师均需经过严格甄选，是一群懂营销、善于操作推广布局的行业精英及专家。加入阿里巴巴1688网销宝的讲师培养计划，可以缔造个人品牌影响力及为个人快速上升进入行业。</div></li>
+									<li class="list_">铜牌-1688网销宝铜牌营销讲师</li>
+									<li class="list_">银牌-1688网销宝银牌营销讲师</li>
+									<li class="list_">金牌-1688网销宝金牌营销讲师</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Add Pagination -->
+			<div class="swiper-pagination"></div>
+		</div>
+	</div>
+		<script>
+		    var mySwiper = new Swiper('.swiper-container', {
+		    	initialSlide:0,
+		        pagination: '.swiper-pagination',
+		        paginationClickable: true,
+		        direction: 'vertical',
+	            mousewheelControl: true,
+	            simulateTouch: true,
+	            grabCursor: true,
+	            onInit: function(swiper) {
+	                $(".swiper-slide").eq(swiper.activeIndex).find(".ani_").each(function() {
+	                    $(this).addClass($(this).attr("data-in"));
+	                });
+	                $(".swiper-pagination-bullet,.swiper-pagination-bullet-active").css("background","#FFF");
+	            },
+	            onTransitionStart: function(swiper) {
+	            	if (swiper.activeIndex>=1){
+		                $(".swiper-pagination-bullet,.swiper-pagination-bullet-active").css("background","");
+	            	}else{
+		                $(".swiper-pagination-bullet,.swiper-pagination-bullet-active").css("background","#FFF");
+	            	}
+	            },
+	            onSlideChangeEnd: function(swiper) {
+	                $(".replay_ .ani_").each(function() {
+	                    $(this).removeClass($(this).attr("data-in"));
+	                });
+	                $(".swiper-slide").eq(swiper.activeIndex).find(".ani_").each(function() {
+	                    $(this).addClass($(this).attr("data-in"));
+	                });
+	            }
+		    });
+		    $(function(){
+		        setTimeout(function(){
+		            $("html,body").stop().animate({
+		              scrollTop: $(".swiper-container").offset().top
+		            });
+		        },900);
+           });
+		</script>
+	</body>
+
+</html>
