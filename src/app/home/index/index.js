@@ -113,17 +113,17 @@ define(['home/case/index'], function(require, exports, module) {
                     }
                 },
                 onSetTransition: function(swiper, transiton) {
-                    swiper2.onResize();
+                    swiper.onResize();
                     //懒加载图片
                     fun.lazyImages();
                 },
                 onTouchStart: function(swiper, even) {
-                    swiper2.onResize();
+                    swiper.onResize();
                     //懒加载图片
                     fun.lazyImages();
                 },
                 onTouchEnd: function(swiper, even) {
-                    swiper2.onResize();
+                    swiper.onResize();
                 }
             });
             //调用运算滚动值
@@ -139,6 +139,11 @@ define(['home/case/index'], function(require, exports, module) {
                 fun.coordinateValue();
                 //懒加载图片
                 fun.lazyImages();
+                //这里对翻到页底时，不管有几项在页面中显示，以最后一项为选中状态
+                if (Math.abs(swiper2.getWrapperTranslate('y')) >= ($(".swiper-H .swiper-wrapper>*").height() - $(window).height())) {
+                    var Nav_name = $(".page-content .nav-name").last().attr("data-id");
+                    $('#' + Nav_name).addClass("active").siblings().removeClass("active").closest("ul").attr("data-nav", Nav_name);
+                }
             });
             $(".page-sidebar").on('webkitTransitionEnd transitionend', function() {
                 swiper2.onResize();

@@ -1,17 +1,4 @@
 {
-  "name": "gulp-seajs-hbs",
-  "version": "1.0.0",
-  "description": "gulp-seajs-hbs",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kamu1/gulp-seajs-hbs.git"
-  },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.14.3",
     "fs": "^0.0.1-security",
@@ -37,9 +24,5 @@
     "imagemin-pngquant": "^5.0.0",
     "path": "^0.12.7",
     "yargs": "^5.0.0"
-  },
-  "bugs": {
-    "url": "https://github.com/kamu1/gulp-seajs-hbs/issues"
-  },
-  "homepage": "https://github.com/kamu1/gulp-seajs-hbs#readme"
+  }
 }

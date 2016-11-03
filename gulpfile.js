@@ -88,7 +88,7 @@ gulp.task('serve', yargs.d ? ['css', 'js', 'html', 'index','images','public'] : 
     gulp.watch(src + '/app/**/*.css', ['css']);
     gulp.watch(src + '/app/**/*.js', ['js']);
     gulp.watch([src + '/app/**/*.handlebars'], ['hbs','handlebars']);
-    gulp.watch([src + '/app/**/*.html'], ['html']) //.on('change', reload);
+    gulp.watch([src + '/app/**/*.html',src + '/app/home/work/index.hbs'], ['html']) //.on('change', reload);
 });
 
 // less编译后的css将注入到浏览器里实现更新
@@ -119,13 +119,15 @@ gulp.task('cls', function() {
             (yargs.b && yargs.b !== true) ? yargs.b : dist,
             dist.replace(/[\/\\]/g, "") + '.html',
             //如果-b和-d参数值一样，下面再匹配删除一下主目录.html
-            './' + ((yargs.b && yargs.b !== true) ? yargs.b.replace(/[\/\\]/g, "") : dist.replace(/[\/\\]/g, "")) + '.html'
+            './' + ((yargs.b && yargs.b !== true) ? yargs.b.replace(/[\/\\]/g, "") : dist.replace(/[\/\\]/g, "")) + '.html',
+            src + '/temp_app'
         ], { read: false })
         .pipe(clean())
 });
 //清理临时的app目录
 gulp.task('del', function() {
     gulp.src([
+            src + '/temp_app',
             src + '/app/**/*.hbs'
         ], { read: false })
         .pipe(clean())
@@ -176,35 +178,33 @@ gulp.task('seajs', function() {
 });
 
 //压缩生成HTML
-gulp.task('html',['hbs'], function() {
-    setTimeout(function(){
-        return merge(
-            gulp.src([src + '/app/**/*.html'])  //,src + '/app/**/*.handlebars'
-                .pipe(data(function(file) {
-                    try {
-                        //识别.html和.handlebars文件
-                        var baseName=path.basename(file.path, ".html")==path.basename(file.path)?path.basename(file.path, ".handlebars"):path.basename(file.path, ".html");
-                        var filePath = path.join(path.dirname(file.path), baseName + ".json");
-                        return JSON.parse(fs.readFileSync(filePath));
-                    } catch (err) {
-                        console.log("> " + filePath)
-                        return {};
-                    }
-                }))
-                .pipe(handlebars(typeof(data)=="object" ? Object.assign(data,{"imgsPath":dist}):fun.file_path, fun.hbs_options)) //'src/app/admin/index.json'
-                //引入JSON的HTML模板
-                // .pipe(fileinclude({
-                //   prefix: '@@',
-                //   basepath: 'src/app/common/'//'@file'
-                // }))
-                .pipe(htmlminify())
-                .pipe(replace({
-                    patterns: replace_patterns
-                }))
-                .pipe(gulp.dest(dist + "/app"))
-                .pipe(reload({ stream: true }))
-        );
-    },2000);
+gulp.task('html', function() {
+    return merge(
+        gulp.src([src + '/app/**/*.html'])  //,src + '/app/**/*.handlebars'
+            .pipe(data(function(file) {
+                try {
+                    //识别.html和.handlebars文件
+                    var baseName=path.basename(file.path, ".html")==path.basename(file.path)?path.basename(file.path, ".handlebars"):path.basename(file.path, ".html");
+                    var filePath = path.join(path.dirname(file.path), baseName + ".json");
+                    return JSON.parse(fs.readFileSync(filePath));
+                } catch (err) {
+                    console.log("> " + filePath)
+                    return {};
+                }
+            }))
+            .pipe(handlebars(typeof(data)=="object" ? Object.assign(data,{"imgsPath":dist}):fun.file_path, fun.hbs_options)) //'src/app/admin/index.json'
+            //引入JSON的HTML模板
+            // .pipe(fileinclude({
+            //   prefix: '@@',
+            //   basepath: 'src/app/common/'//'@file'
+            // }))
+            .pipe(htmlminify())
+            .pipe(replace({
+                patterns: replace_patterns
+            }))
+            .pipe(gulp.dest(dist + "/app"))
+            .pipe(reload({ stream: true }))
+    );
 });
 //生成临时引导页
 gulp.task('index', ['index.html'], function() {
@@ -256,6 +256,91 @@ gulp.task('handlebars', function() {
         // .pipe(reload({ stream: true }))
 });
 
+//生成临时HTML
+gulp.task('temphtml',['hbs',"seajs",'images',"index"], function() { //,'css' 打包处理，独立CSS任务可以不需要
+    gulp.src([src + '/app/**/*.html',src + '/app/**/*.handlebars'])
+        .pipe(data(function(file) {
+            try {
+                //识别.html和.handlebars文件
+                var baseName=path.basename(file.path, ".html")==path.basename(file.path)?path.basename(file.path, ".handlebars"):path.basename(file.path, ".html");
+                var filePath = path.join(path.dirname(file.path), baseName + ".json");
+                return JSON.parse(fs.readFileSync(filePath));
+            } catch (err) {
+                console.log("> " + filePath)
+                return {};
+            }
+        }))
+        .pipe(handlebars(typeof(data)=="object" ? Object.assign(data,{"imgsPath":dist}):fun.file_path, fun.hbs_options))
+        //引入JSON的HTML模板
+        // .pipe(fileinclude({
+        //   prefix: '@@',
+        //   basepath: 'src/app/common/'//'@file'
+        // }))
+        // .pipe(htmlminify())
+        .pipe(replace({
+            patterns: replace_patterns
+        }))
+        .pipe(gulp.dest(src + "/temp_app"))
+});
+//同步JS和CSS文件到临时目录
+gulp.task('tofiles', function() {
+    gulp.src([src + '/app/**/*.css', src + '/app/**/*.js',, src + '/app/**/*.less'])
+        .pipe(gulpif("*.less", less()))
+        .pipe(gulp.dest(src + "/temp_app"))
+});
+
+//生成临时目录下的文件
+gulp.task('todist', function() {
+    setTimeout(function(){
+        var appDirname=["home","admin"];
+        fs.readdir(src + '/app/'+appDirname[0], function(err, files) {
+            if (err) {
+                throw err;
+            }
+            for(var i=0;i<files.length;i++){
+                if (files[i].indexOf(".")<0){
+                    gulp.src([src + '/temp_app/'+appDirname[0]+'/'+files[i]+'/*.html'])
+                        .pipe(useref())
+                        .pipe(gulpif('*.js', uglify({
+                            mangle: {
+                                except: ['seajs','require', 'exports', 'module'] //这几个变量不能压缩混淆，否则会引发seajs的一些意外问题
+                            }
+                        })))
+                        .pipe(gulpif('*.css', minifyCss()))
+                        .pipe(htmlminify())
+                        .pipe(replace({
+                            patterns: replace_patterns
+                        }))
+                        .pipe(gulp.dest(dist + '/app/'+appDirname[0]+'/'+files[i]))
+                }
+            }
+        });
+        fs.readdir(src + '/app/'+appDirname[1], function(err, files) {
+            if (err) {
+                throw err;
+            }
+            for(var i=0;i<files.length;i++){
+                if (files[i].indexOf(".")<0){
+                    gulp.src([src + '/temp_app/'+appDirname[1]+'/'+files[i]+'/*.html'])
+                        .pipe(useref())
+                        .pipe(gulpif('*.js', uglify({
+                            mangle: {
+                                except: ['seajs','require', 'exports', 'module'] //这几个变量不能压缩混淆，否则会引发seajs的一些意外问题
+                            }
+                        })))
+                        .pipe(gulpif('*.css', minifyCss()))
+                        .pipe(htmlminify())
+                        .pipe(replace({
+                            patterns: replace_patterns
+                        }))
+                        .pipe(gulp.dest(dist + '/app/'+appDirname[1]+'/'+files[i]))
+                }
+            }
+        });
+    },2000);
+
+});
+
 //图片压缩并导出
 gulp.task('images', function() {
     gulp.src(src + '/static/**/*.{png,jpg,gif,ico}')
@@ -275,8 +360,12 @@ gulp.task('images', function() {
 
 });
 
+//默认执行link和script标签进行HTML的合并
+gulp.task('default', ["temphtml", "todist", "tofiles","public",'handlebars'], function() {
+    console.log("完成后请执行：gulp.del  清除临时目录");
+});
 
-//默认任务
-gulp.task("default", ['css', 'js', 'html', 'images','public','index'], function() {
-    
+//可调试任务
+gulp.task("dev", ['css', 'js', 'html', 'images',"public"], function() {
+    //运行调试模式时导出一下公用库
 });
